@@ -9,14 +9,14 @@ public interface IEntity<T>
     bool IsDeleted { get; set; }
 }
 
-public class Entity : IEntity<long>
+public abstract class Entity : IEntity<long>
 {
     public long Id { get; set; }
     public bool IsDeleted { get; set; }
 }
 
-public class Entity<T> : IEntity<T>
+public abstract class Entity<T> : IEntity<T>
 {
-    public T Id { get; set; }
+    public T Id { get; set; } = default!;
     public bool IsDeleted { get; set; }
 }
