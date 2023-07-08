@@ -1,13 +1,16 @@
-﻿using BaseBackend.Domian;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace BaseBackend.Infrastructure.Persistence.Context;
 
 public class BaseContext : DbContext
 {
-    public DbSet<FirstEntity> FirstEntities { get; set; }
-
     public BaseContext(DbContextOptions<BaseContext> options) : base(options)
     {
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        //modelBuilder.RegisterAllEntities<IEntity>(typeof(Country).Assembly);
+
+        base.OnModelCreating(modelBuilder);
     }
 }
