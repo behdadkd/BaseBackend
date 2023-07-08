@@ -3,7 +3,10 @@
 
 namespace BaseBackend.Domain;
 
-public interface IEntity<T>
+public interface IEntity
+{
+}
+public interface IEntity<T> : IEntity
 {
     T Id { get; set; }
 }
@@ -21,7 +24,7 @@ public interface IDeletableEntity<T> : IEntity<T>
     bool IsDeleted { get; set; }
 }
 
-public interface IFullEntity<T> : IKnownEntity<T>,IDeletableEntity<T>
+public interface IFullEntity<T> : IKnownEntity<T>, IDeletableEntity<T>
 {
 }
 
@@ -51,7 +54,7 @@ public abstract class DeletableEntity<T> : Entity<T>, IDeletableEntity<T>
 
 }
 
-public abstract class FullEntity<T> : Entity<T> , IFullEntity<T>
+public abstract class FullEntity<T> : Entity<T>, IFullEntity<T>
 {
     public Guid? CreatedUserId { get; set; }
     public DateTime CreatedOn { get; set; }

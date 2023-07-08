@@ -16,7 +16,6 @@ public static class ModelBuilderExtentions
             .SelectMany(a => a.GetExportedTypes())
             .Where(c => c.IsClass && !c.IsAbstract && c.IsPublic && typeof(BaseType)
             .IsAssignableFrom(c));
-
         foreach (Type type in types)
             modelBuilder.Entity(type);
     }
